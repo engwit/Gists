@@ -87,26 +87,26 @@ class RedactionSelection():
         self.bounds = bounds
         self.x1, self.y1, self.x2, self.y2 = bounds
         self.bkg_color = self.find_bkg_color()
-        self.txt_color,
+        (self.txt_color,
             self.txt_x1,
             self.txt_y1,
             self.txt_x2,
-            self.txt_y2 = self.find_text_attrs()
+            self.txt_y2) = self.find_text_attrs()
         self.txt_bounds = (self.txt_x1, self.txt_y1, self.txt_x2, self.txt_y2)
         self.font_size = self.get_font_size()
 
     def find_bkg_color(self):
-    """
-    Background color assumed to be the top left pixel of the selection box.
-    """
+        """
+        Background color assumed to be the top left pixel of the selection box.
+        """
         # returning only the channel values
         return pdb.gimp_drawable_get_pixel(self.base_layer,
                                            self.x1, self.y1)[1][0:3]
 
     def find_text_attrs(self):
-    """
-    Finds and returns both the boundaries and color of the text.
-    """
+        """
+        Finds and returns both the boundaries and color of the text.
+        """
         # text boundaries
         txt_x1 = self.x2
         txt_y1 = self.y2
@@ -147,22 +147,22 @@ class RedactionSelection():
         return mx_color, txt_x1, txt_y1, txt_x2, txt_y2
 
     def get_font_size(self):
-    """
-    Font size determined by the height of the bounding box of the text
-    multiplied by a factor determined through trial and error.
-
-    Possible improvement: use optical character recognition to recognize
-    the text, match exact size using get-extents pdb function, then put in
-    replacement text at determined size
-    """
+        """
+        Font size determined by the height of the bounding box of the text
+        multiplied by a factor determined through trial and error.
+    
+        Possible improvement: use optical character recognition to recognize
+        the text, match exact size using get-extents pdb function, then put in
+        replacement text at determined size
+        """
         return (self.txt_y2 - self.txt_y1) * 1.2
 
 
     def get_text_vert_offset(self, text, font):
-    """
-    Determines the pixel offset necessary to center new text vertically over the
-    old text.
-    """
+        """
+        Determines the pixel offset necessary to center new text vertically over the
+        old text.
+        """
         _, text_height, _, _ = pdb.gimp_text_get_extents_fontname(
             text, self.font_size, PIXELS, font)
         return int((self.txt_y2 - self.txt_y1) / 2 - text_height / 2)
