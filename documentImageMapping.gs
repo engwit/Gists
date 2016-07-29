@@ -5,7 +5,7 @@
  * InlineImages (i.e., text wrapping is set to "In line"), and documents must be
  * in the top level of the chosen folder.
  *
- * Authors: Kyle Crouse (kacrouse) and Josh Williams
+ * Authors: Kyle Crouse (kacrouse) and Josh Williams (engwit-josh)
  *
  * TO USE THIS SCRIPT:
  * 1. Attach the script to a Google Sheet by opening a sheet and clicking Tools >
