@@ -1,4 +1,4 @@
-# gists
+# Gists
 A collection of useful code snippets and scripts. This repository will be added to over time.
 
 ### Contents
