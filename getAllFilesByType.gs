@@ -3,6 +3,8 @@
  * MIME Types specified by mimeTypes and returns the resulting array. 
  * If mimeTypes is an empty array, files of all types are returned.
  * 
+ * @author Kyle Crouse <kacrouse>
+ * 
  * @param {Folder} driveFolder - the folder to look for files in. 
  * See https://developers.google.com/apps-script/reference/drive/folder for reference.
  * @param {string[]} mimeTypes - the file types to look for.
